@@ -5,18 +5,17 @@ session_start();
 require("../database/conexao.php");
 
 /*Função de validação */
-function validaCampos(){
+function validaCampos()
+{
 
     $erros = [];
 
-    if(!isset($_POST['descricao']) || $_POST['descricao'] == ""){
+    if (!isset($_POST['descricao']) || $_POST['descricao'] == "") {
 
         $erros[] = "O campo de descrição é de preenchimento obrigatório";
-
     }
 
     return $erros;
-
 }
 
 /*Tratamento dos dados vindos do formulário
@@ -29,14 +28,13 @@ switch ($_POST["acao"]) {
 
         $erros = validaCampos();
 
-        if(count($erros) > 0){
+        if (count($erros) > 0) {
 
             $_SESSION["erros"] = $erros;
 
             header("location: index.php");
 
             exit();
-
         }
 
         // echo "inserir";
@@ -70,6 +68,19 @@ switch ($_POST["acao"]) {
         // echo $categoriaID;exit;
 
         $sql = "DELETE FROM tbl_categoria WHERE id = $categoriaID";
+
+        $resultado = mysqli_query($conexao, $sql);
+
+        header('location: index.php');
+
+        break;
+
+    case 'editar':
+
+        $id = $_POST["id"];
+        $descricao = $_POST["descricao"];
+
+        $sql = "UPDATE tbl_categoria SET descricao = '$descricao' WHERE id = $id";
 
         $resultado = mysqli_query($conexao, $sql);
 

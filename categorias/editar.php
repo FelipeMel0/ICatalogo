@@ -15,7 +15,7 @@ $categoria = mysqli_fetch_array($resultado);
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +33,8 @@ $categoria = mysqli_fetch_array($resultado);
         <section class="categorias-container">
             <main>
                 <form class="form-categoria" method="POST" action="./acoes.php">
-                    <input type="hidden" name="acao" value="inserir" />
+                    <input type="hidden" name="acao" value="editar" />
+                    <input type="hidden" name="id" value="<?php echo $categoria["id"] ?>" />
                     <h1 class="span2">Editar Categorias</h1>
 
                     <ul>
