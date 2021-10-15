@@ -103,9 +103,7 @@ $resultado = mysqli_query($conexao, $sql);
               <?php
               
                 while ($categoria = mysqli_fetch_array($resultado)) {
-
-                
-              
+          
               ?>
               <option value="<?php echo $categoria["id"] ?>"><?php echo $categoria["descricao"] ?></option>
               <?php } ?>
