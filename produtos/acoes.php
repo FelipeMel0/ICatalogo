@@ -170,6 +170,18 @@ switch ($_POST["acao"]) {
 
         break;
 
+    case 'editar':
+
+        $id = $_POST["id"];
+        $descricao = $_POST["descricao"];
+
+        $sql = "UPDATE tbl_produto SET descricao = '$descricao' WHERE id = $id";
+
+        $resultado = mysqli_query($conexao, $sql);
+
+        header('location: index.php');
+
+        break;
 
     default:
         # code...

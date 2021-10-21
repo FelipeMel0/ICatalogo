@@ -80,7 +80,7 @@ $resultado = mysqli_query($conexao, $sql);
 
           <div class="input-group">
             <label for="tamanho">Tamanho</label>
-            <input type="text" name="tamanho" id="tamanho">
+            <input type="text" name="tamanho" id="tamanho" >
           </div>
 
           <div class="input-group">
