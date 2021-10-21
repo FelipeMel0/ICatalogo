@@ -96,8 +96,6 @@ $selecionar = mysqli_fetch_array(mysqli_query($conexao, $sql3));
 
             <select id="categoria" name="categoria" required>
 
-              <option value="<?php echo $produto["categoria_id"] ?>" selected><?php echo $produto[""] ?></option>
-
               <!-- Início da listagem de categorias vindo do banco -->
               <?php
 
