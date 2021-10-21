@@ -117,8 +117,9 @@ $resultado = mysqli_query($conexao, $sql);
             <label for="categoria">Foto</label>
             <input type="file" name="foto" id="foto" accept="image/*" />
           </div>
-
-          <button onclick="javascript:window.location.href = '../'">Cancelar</button>
+          
+          <a href="../../produtos/index.php" id="botaoCancelar">Cancelar</a>
+          
           <button>Salvar</button>
 
         </form>
