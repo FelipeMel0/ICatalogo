@@ -62,12 +62,12 @@ $selecionar = mysqli_fetch_array(mysqli_query($conexao, $sql3));
 
           <div class="input-group">
             <label for="peso">Peso</label>
-            <input type="text" name="peso" value="<?php echo $produto["peso"] ?>" id="peso" required>
+            <input type="text" name="peso" value="<?php echo number_format($produto["peso"], 2, ",", ".") ?>" id="peso" required>
           </div>
 
           <div class="input-group">
             <label for="quantidade">Quantidade</label>
-            <input type="text" name="quantidade" value="<?php echo $produto["quantidade"] ?>" id="quantidade" required>
+            <input type="text" name="quantidade" value="<?php echo number_format($produto["quantidade"], 2, ",", ".") ?>" id="quantidade" required>
           </div>
 
           <div class="input-group">
@@ -77,17 +77,17 @@ $selecionar = mysqli_fetch_array(mysqli_query($conexao, $sql3));
 
           <div class="input-group">
             <label for="tamanho">Tamanho</label>
-            <input type="text" value="<?php echo $produto["tamanho"] ?>" name="tamanho" id="tamanho">
+            <input type="text" value="<?php echo number_format($produto["tamanho"], 2, ",", ".")?>" name="tamanho" id="tamanho">
           </div>
 
           <div class="input-group">
             <label for="valor">Valor</label>
-            <input type="text" name="valor" value="<?php echo $produto["valor"] ?>" id="valor" required>
+            <input type="text" name="valor" value="<?php echo number_format($produto["valor"], 2, ",", ".") ?>" id="valor" required>
           </div>
 
           <div class="input-group">
             <label for="desconto">Desconto</label>
-            <input type="text" name="desconto" value="<?php echo $produto["desconto"] ?>" id="desconto">
+            <input type="text" name="desconto" value="<?php echo number_format($produto["desconto"], 2, ",", ".") ?>" id="desconto">
           </div>
 
           <div class="input-group">
