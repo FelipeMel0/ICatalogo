@@ -26,6 +26,8 @@ $resultado = mysqli_query($conexao, $sql);
 
 <body>
 
+  <?php include('../../componentes/header/header.php'); ?>
+
   <div class="content">
 
     <section class="produtos-container">
@@ -41,19 +43,17 @@ $resultado = mysqli_query($conexao, $sql);
           <ul>
 
             <?php
-            
-              if(isset($_SESSION["erros"])){
 
-                foreach($_SESSION["erros"] as $erro){
+            if (isset($_SESSION["erros"])) {
 
-                  echo "<li> $erro </li>";
+              foreach ($_SESSION["erros"] as $erro) {
 
-                }
-
-                session_destroy();
-
+                echo "<li> $erro </li>";
               }
-            
+
+              session_destroy();
+            }
+
             ?>
 
           </ul>
@@ -80,7 +80,7 @@ $resultado = mysqli_query($conexao, $sql);
 
           <div class="input-group">
             <label for="tamanho">Tamanho</label>
-            <input type="text" name="tamanho" id="tamanho" >
+            <input type="text" name="tamanho" id="tamanho">
           </div>
 
           <div class="input-group">
@@ -101,11 +101,11 @@ $resultado = mysqli_query($conexao, $sql);
 
               <!-- Início da listagem de categorias vindo do banco -->
               <?php
-              
-                while ($categoria = mysqli_fetch_array($resultado)) {
-          
+
+              while ($categoria = mysqli_fetch_array($resultado)) {
+
               ?>
-              <option value="<?php echo $categoria["id"] ?>"><?php echo $categoria["descricao"] ?></option>
+                <option value="<?php echo $categoria["id"] ?>"><?php echo $categoria["descricao"] ?></option>
               <?php } ?>
               <!-- Fim -->
 
@@ -117,9 +117,9 @@ $resultado = mysqli_query($conexao, $sql);
             <label for="categoria">Foto</label>
             <input type="file" name="foto" id="foto" accept="image/*" />
           </div>
-          
+
           <a href="../../produtos/index.php" id="botaoCancelar">Cancelar</a>
-          
+
           <button>Salvar</button>
 
         </form>

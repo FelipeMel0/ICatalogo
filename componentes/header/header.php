@@ -1,10 +1,17 @@
-<link href="../componentes/header/header.css" rel="stylesheet" />
+<?php
+
+$raiz = "/felipe/aula10/senai-icatalogo-mysqli-alunos/"
+
+?>
+
+
+<link href="<?= $raiz ?>/componentes/header/header.css" rel="stylesheet" />
 
 <header class="header">
 
     <figure>
         <a href="../produtos">
-            <img src="../imgs/logo.png" />
+            <img src="<?=$raiz?>/imgs/logo.png" />
         </a>
     </figure>
    
