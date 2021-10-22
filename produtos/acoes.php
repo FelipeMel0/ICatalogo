@@ -172,6 +172,17 @@ switch ($_POST["acao"]) {
 
     case 'editar':
 
+        $erros = validaCampos();
+
+        if (count($erros) > 0) {
+
+            $_SESSION["erros"] = $erros;
+
+            header("location: editar/index.php");
+
+            exit;
+        }
+
         /*Atualizando a imagem do produto */
 
         $produtoId = $_POST["produtoId"];
@@ -213,7 +224,9 @@ switch ($_POST["acao"]) {
 
         $cor = $_POST["cor"];
 
-        $tamanho = $_POST["tamanho"];
+        // $tamanho = $_POST["tamanho"];
+        $tamanho = str_replace(".", "", $_POST["tamanho"]);
+        $tamanho = str_replace(",", ".", $tamanho);
 
         // $desconto = $_POST["desconto"];
         $desconto = str_replace(".", "", $_POST["desconto"]);
