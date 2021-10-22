@@ -134,7 +134,10 @@ $selecionar = mysqli_fetch_array(mysqli_query($conexao, $sql3));
             <input type="file" name="foto" id="foto" accept="image/*" />
           </div>
 
-          <button onclick="javascript:window.location.href = '../'">Cancelar</button>
+          <!-- <button onclick="javascript:window.location.href = '../..'">Cancelar</button> -->
+
+          <a href="../../produtos/index.php" id="botaoCancelar">Cancelar</a>
+          
           <button>Salvar</button>
 
         </form>

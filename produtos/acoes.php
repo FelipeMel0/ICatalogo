@@ -176,15 +176,24 @@ switch ($_POST["acao"]) {
 
         $produtoId = $_POST["produtoId"];
 
-        if($_FILES["foto"]["error"] != UPLOAD_ERR_NO_FILE){
+        if ($_FILES["foto"]["error"] != UPLOAD_ERR_NO_FILE) {
 
             $sqlImagem = "SELECT imagem FROM tbl_produto WHERE id = $produtoId";
 
             $resultado = mysqli_query($conexao, $sqlImagem);
             $produto = mysqli_fetch_array($resultado);
 
-            // echo '/fotos' . $produto["imagem"]; exit;
+            //Exclusão da imagem (arquivo) antiga da pasta
 
+            unlink("./fotos/" . $produto["imagem"]);
+
+            $nomeArquivo = $_FILES["foto"]["name"];
+
+            $extensao = pathinfo($nomeArquivo, PATHINFO_EXTENSION);
+
+            $novoNomeArquivo = md5(microtime()) . "." . $extensao;
+
+            move_uploaded_file($_FILES["foto"]["tmp_name"], "fotos/$novoNomeArquivo");
         }
 
         /* Captura os dados de texto e de número */
@@ -197,15 +206,36 @@ switch ($_POST["acao"]) {
         $valor = str_replace(".", "", $_POST["valor"]);
         $valor = str_replace(",", ".", $valor);
 
-        $quantidade = $_POST["quantidade"];
+        $quantidade = str_replace(".", "", $_POST["quantidade"]);
+        $quantidade = str_replace(",", ".", $quantidade);
+
+        // $quantidade = $_POST["quantidade"];
 
         $cor = $_POST["cor"];
 
         $tamanho = $_POST["tamanho"];
 
-        $desconto = $_POST["desconto"];
+        // $desconto = $_POST["desconto"];
+        $desconto = str_replace(".", "", $_POST["desconto"]);
+        $desconto = str_replace(",", ".", $desconto);
 
         $categoriaId = $_POST["categoria"];
+
+        $sqlUpdate = "UPDATE tbl_produto SET descricao = '$descricao', peso = $peso,
+                                            quantidade = $quantidade, cor = '$cor',
+                                            tamanho = '$tamanho', valor = $valor,
+                                            desconto = $desconto, categoria_id = $categoriaId";
+
+        /*Verifica se tem imagem nova para atualizar*/
+        $sqlUpdate .= isset($novoNomeArquivo) ? " , imagem = '$novoNomeArquivo'" : "";
+
+        $sqlUpdate .= "WHERE id = $produtoId";
+
+        $resultado = mysqli_query($conexao, $sqlUpdate);
+
+        // echo $sqlUpdate; exit;
+
+        header("location: index.php");
 
         break;
 
