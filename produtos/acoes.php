@@ -172,20 +172,20 @@ switch ($_POST["acao"]) {
 
     case 'editar':
 
+        $produtoId = $_POST["produtoId"];
+
         $erros = validaCampos();
 
         if (count($erros) > 0) {
 
             $_SESSION["erros"] = $erros;
 
-            header("location: editar/index.php");
+            header("location: editar/index.php?id=$produtoId");
 
             exit;
         }
 
         /*Atualizando a imagem do produto */
-
-        $produtoId = $_POST["produtoId"];
 
         if ($_FILES["foto"]["error"] != UPLOAD_ERR_NO_FILE) {
 
