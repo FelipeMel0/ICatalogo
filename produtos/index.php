@@ -2,13 +2,12 @@
 
     require('../database/conexao.php');
 
-    $sql = "SELECT p.*, c.descricao FROM tbl_produto p 
-            INNER JOIN tbl_categoria c ON p.categoria_id = c.id;";
+    $sql = "SELECT p.*, c.descricao AS nome_categoria FROM tbl_produto p 
+            INNER JOIN tbl_categoria c ON p.categoria_id = c.id";
 
     $resultado = mysqli_query($conexao, $sql);
 
     // var_dump($resultado); exit;
-
 
 ?>
 
@@ -94,10 +93,10 @@
                             </em>
                         </span>
 
-                        <span class="descricao"><?php echo $produto["1"] ?></span>
+                        <span class="descricao"><?php echo $produto["descricao"]?></span>
 
                         <span class="categoria">
-                            <em><?php echo $produto["descricao"]?></em>
+                            <em><?php echo $produto["nome_categoria"]?></em>
                         </span>
 
                 </article>
