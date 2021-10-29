@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 require("../database/conexao.php");
 
 $sql = "SELECT * FROM tbl_categoria";

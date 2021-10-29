@@ -38,13 +38,15 @@ switch ($_POST["acao"]) {
         $usuario = $_POST["usuario"];
         $senha = $_POST["senha"];
 
-        realizarLogin('CelsoLinux', 'linux123', $conexao);
+        realizarLogin($usuario, $senha, $conexao);
 
         break;
 
     case 'logout':
 
-        echo "Vc jogou fora... o amor que te dei... 😞😞";
+        // echo "Vc jogou fora... o amor que eu te dei... 😞😞";
+        session_destroy();
+        header("location: ../../produtos/index.php");
 
         break; 
 
