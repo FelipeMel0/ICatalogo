@@ -13,7 +13,7 @@ function realizarLogin($usuario, $senha, $conexao){
 
     $dadosUsuario = mysqli_fetch_array($resultado);
 
-    if (isset($dadosUsuario['usuario']) && isset($dadosUsuario['senha'])) {
+    if (isset($dadosUsuario['usuario']) && isset($dadosUsuario['senha']) && password_verify($senha, $dadosUsuario['senha'])) {
 
         // echo "Narutinho";
 
