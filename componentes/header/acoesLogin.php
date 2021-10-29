@@ -1,10 +1,10 @@
 <?php
 
-// session_start();
+session_start();
 
 require_once('../../database/conexao.php');
 
-function realizarLogin($usuario, $senha, $conexao) {
+function realizarLogin($usuario, $senha, $conexao){
 
     $sql = "SELECT * FROM tbl_administrador
             WHERE usuario = '$usuario' AND senha = '$senha'";
@@ -15,14 +15,43 @@ function realizarLogin($usuario, $senha, $conexao) {
 
     if (isset($dadosUsuario['usuario']) || isset($dadosUsuario['senha'])) {
 
-        echo "Narutinho";
-        //armazenar variáveis de sessão e redirecionar para o index
+        // echo "Narutinho";
 
-    } else{
+        $_SESSION["usuarioId"] = $dadosUsuario["id"];
+        $_SESSION["nome"] = $dadosUsuario["nome"];
+
+        // echo $_SESSION["usuarioId"];
+        // echo $_SESSION["nome"];
+
+        header("location: ../../produtos/index.php");
+
+    } else {
         echo "Burro";
         //session_destroy() e manda para o index de novo
     }
-
 }
 
-realizarLogin('MarcelEntidade', 'teste123', $conexao);
+
+switch ($_POST["acao"]) {
+    case 'login':
+        
+        $usuario = $_POST["usuario"];
+        $senha = $_POST["senha"];
+
+        realizarLogin('CelsoLinux', 'linux123', $conexao);
+
+        break;
+
+    case 'logout':
+
+        echo "Vc jogou fora... o amor que te dei... 😞😞";
+
+        break; 
+
+    default:
+        #code
+        break;
+}
+
+
+
